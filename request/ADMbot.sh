@@ -234,13 +234,13 @@ done <<< "$portas_var"
 echo -e $portas
 }
 local bot_retorno="$LINE\n"
-          bot_retorno+="$(fun_trans "Portas e Servicos Ativos")\n"
+          bot_retorno+="$(fun_trans "Detalles De la VPS")\n"
           bot_retorno+="$LINE\n"
           bot_retorno+="IP: $(meu_ip)\n"
           while read line; do
           local serv=$(echo $line|cut -d'|' -f1)
           local port=$(echo $line|cut -d'|' -f2)
-          bot_retorno+="$(fun_trans "Servico"): ${serv} $(fun_trans "Porta"): ${port}\n"
+          bot_retorno+="$(fun_trans "Servicio"): ${serv} $(fun_trans "Puerto"): ${port}\n"
           done <<< "$(mine_port)"
           bot_retorno+="$LINE\n"
 	      ShellBot.sendMessage --chat_id ${message_chat_id[$id]} \
@@ -251,10 +251,10 @@ local bot_retorno="$LINE\n"
 # AJUDA
 ajuda_fun () {
 local bot_retorno="$LINE\n"
-         bot_retorno+="$(fun_trans "Hola amigo")\n"
-         bot_retorno+="$(fun_trans "Bienvenido al BOT ")\n"
+         bot_retorno+="$(fun_trans "Bienvenido")\n"
+         bot_retorno+="$(fun_trans "BOT By Nexuser")\n"
          bot_retorno+="$LINE\n"
-         bot_retorno+="$(fun_trans "Aquí esta la lista de Comandos Disponibles")\n"
+         bot_retorno+="$(fun_trans "Tus Comandos Disponibles")\n"
          bot_retorno+="$LINE\n"
          bot_retorno+="$(fun_trans "COMANDOS")\n"
          bot_retorno+="/online ($(fun_trans "usuarios online"))\n"
