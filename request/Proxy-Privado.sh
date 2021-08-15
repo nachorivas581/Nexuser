@@ -23,7 +23,7 @@ sleep 1s
 }
 clear
 cowsay -f eyes "esta herramienta le cambia y da color al status de conexion y agrega una contrasena atu payload para mayor seguridad...." | lolcat 
-figlet ..dankelthaher.. | lolcat
+figlet ..Nexuser.. | lolcat
 BARRA="\e[0;31m➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖\e[0m"
 echo -e "\e[0;31m➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖\e[0m"
 echo ""
