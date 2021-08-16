@@ -7,15 +7,6 @@ apt-get install cowsay -y
 echo -e ""
 apt-get install lolcat -y
 cd $HOME
-SCPdir="/etc/newadm"
-SCPinstal="$HOME/Install"
-SCPidioma="${SCPdir}/idioma"
-SCPusr="${SCPdir}/ger-user"
-SCPfrm="/etc/ger-frm"
-SCPfrm3="/etc/adm-lite"
-SCPinst="/etc/ger-inst"
-rm $HOME/Nexuser.sh
-SCPresq="aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0FBQUFBRVhRT1N5SXBOMkpaMGVoVVEvUFJPWUVDVE9TX0RFU0NPTlRJTlVBRE9TL21hc3Rlci9BRE0tTUFOQUdFUi1EQU5LRUxUSEFIRVIvcmVxdWVzdA=="
 SUB_DOM='base64 -d'
 [[ $(dpkg --get-selections|grep -w "gawk"|head -1) ]] || apt-get install gawk -y &>/dev/null
 [[ $(dpkg --get-selections|grep -w "mlocate"|head -1) ]] || apt-get install mlocate -y &>/dev/null
