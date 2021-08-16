@@ -8,7 +8,7 @@ echo -e ""
 apt-get install lolcat -y
 cd $HOME
 SCPdir="/etc/newadm"
-SCPinstal="$HOME/install"
+SCPinstal="$HOME/Install"
 SCPidioma="${SCPdir}/idioma"
 SCPusr="${SCPdir}/ger-user"
 SCPfrm="/etc/ger-frm"
