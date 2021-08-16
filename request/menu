@@ -120,7 +120,7 @@ msg -verm "$(fun_trans "Perfecto Iniciando Procedimiento"): "
 wget -O $HOME/Actualizacion https://raw.githubusercontent.com/nachorivas581/Nexuser/main/request/Actualizacion &> /dev/null
 chmod +x $HOME/Actualizacion*
 local LINGUAGE=$(cat ${SCPidioma})
-$HOME/Actualizacion"${LINGUAGE}"
+$HOME/Actualizacion "${LINGUAGE}"
 else
 msg -verm "$(fun_trans "Procedimiento Cancelado"): "
 msg -bar2
