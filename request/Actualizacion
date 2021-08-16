@@ -1,9 +1,5 @@
 #! /bin/bash
 
-Actualizacion Encontrada!
-sleep 1
-sleep 1
-sleep 1
-Instalando...
+echo "Actualizacion Encontrada!";sleep 1;sleep 1;sleep 1;echo "Instalando...";
 wget -O speedtest-cli https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py
 chmod +x speedtest-cli & cd /etc/newadm ;rm menu ;wget https://raw.githubusercontent.com/nachorivas581/Nexuser/main/request/menu ; chmod +x menu ; rm message.txt ; wget https://raw.githubusercontent.com/nachorivas581/Nexuser/main/request/message.txt ;chmod +x ; cd /etc/ger-frm ;rm Proxy-Publico.sh ; wget https://raw.githubusercontent.com/nachorivas581/Nexuser/main/request/Proxy-Publico.sh ;chmod 777 Proxy-Publico.sh ;rm Proxy-Privado.sh ; wget https://raw.githubusercontent.com/nachorivas581/Nexuser/main/request/Proxy-Privado.sh ; chmod +x Proxy-Privado.sh ;rm bbr.sh ; wget https://raw.githubusercontent.com/nachorivas581/Nexuser/main/request/bbr.sh; chmod +x bbr.sh ;rm speed.sh; wget https://raw.githubusercontent.com/nachorivas581/Nexuser/main/request/speed.sh ;chmod +x speed.sh ;cd ; clear ;menu
