@@ -203,7 +203,7 @@ fi
 }
 loguin_fun () {
 local bot_retorno+="$LINE\n"
-          bot_retorno+="$(fun_trans "USUARIOS LIBERTADOS EN EL BOT")\n"
+          bot_retorno+="$(fun_trans "USUARIOS EN EL BOT")\n"
           bot_retorno+="$LINE\n"
 	      ShellBot.sendMessage --chat_id ${message_chat_id[$id]} \
 							--text "$(echo -e $bot_retorno)" \
@@ -364,8 +364,8 @@ error_fun () {
 local bot_retorno="$LINE\n"
          bot_retorno+="$(fun_trans "MODO DE USO")\n"
          bot_retorno+="$LINE\n"
-         bot_retorno+="useradd $(fun_trans "Usuario Senha Dias Limite")\n"
-         bot_retorno+="$(fun_trans "Exemplo"):\n"
+         bot_retorno+="useradd $(fun_trans "Usuario Password Dias Limite")\n"
+         bot_retorno+="$(fun_trans "Ejemplo"):\n"
          bot_retorno+='useradd admin admin 30 1\n'
          bot_retorno+="$LINE\n"
          case $1 in
@@ -459,7 +459,7 @@ local bot_retorno="$LINE\n"
          bot_retorno+="$(fun_trans "MODO DE USO")\n"
          bot_retorno+="$LINE\n"
          bot_retorno+="userdell $(fun_trans "Usuario")\n"
-         bot_retorno+="$(fun_trans "Exemplo"):\n"
+         bot_retorno+="$(fun_trans "Ejemplo"):\n"
          bot_retorno+='userdell admin\n'
          bot_retorno+="$LINE\n"
 	     ShellBot.sendMessage --chat_id ${message_chat_id[$id]} \
@@ -643,11 +643,11 @@ local bot_retorno="$LINE\n"
           bot_retorno+="$(fun_trans "MODO DE USO"):\n"
           bot_retorno+="$LINE\n"
           bot_retorno+="/gerar $(fun_trans "Host") $(fun_trans "solicitud") $(fun_trans "Conexion")\n"
-          bot_retorno+="$(fun_trans "Exemplo"):\n"
+          bot_retorno+="$(fun_trans "Ejemplo"):\n"
           bot_retorno+="/gerar www.host.com (1 a 9) (1 a 3)\n"
           bot_retorno+="/gerar www.host.com 2 1\n"
           bot_retorno+="$LINE\n"
-          bot_retorno+="$(fun_trans "Metodos solicitud")\n${LINE}\n1-GET, 2-CONNECT, 3-PUT, 4-OPTIONS, 5-DELETE, 6-HEAD, 7-TRACE, 8-PROPATCH, 9-PATCH\n"
+          bot_retorno+="$(fun_trans "Metodos de solicitud")\n${LINE}\n1-GET, 2-CONNECT, 3-PUT, 4-OPTIONS, 5-DELETE, 6-HEAD, 7-TRACE, 8-PROPATCH, 9-PATCH\n"
           bot_retorno+="$LINE\n"
           bot_retorno+="$(fun_trans "Metodos de Conexion")\n${LINE}\n1-REALDATA, 2-NETDATA, 3-RAW\n"
           bot_retorno+="$LINE\n"
@@ -717,7 +717,7 @@ error_fun () {
 local bot_retorno="$LINE\n"
           bot_retorno+="$(fun_trans "Modo de uso"):\n"
           bot_retorno+="/scan $(fun_trans "dominio")\n"
-          bot_retorno+="$(fun_trans "Exemplo"): /scan www.host.com\n"
+          bot_retorno+="$(fun_trans "Ejemplo"): /scan www.host.com\n"
           bot_retorno+="$LINE\n"
 	      ShellBot.sendMessage --chat_id ${message_chat_id[$id]} \
 							--text "$(echo -e $bot_retorno)" \
@@ -838,7 +838,7 @@ local number=$(expr length "${array[$i]}")
 done
 unset txtofus
 local bot_retorno="$LINE\n"
-          bot_retorno+="$(fun_trans "SEU TEXTO ENCRIPTADO OU DESCRIPTADO"):\n"
+          bot_retorno+="$(fun_trans "SU TEXTO ENCRIPTADO O DESENCRIPTADO"):\n"
           bot_retorno+="$LINE\n"
           ShellBot.sendMessage --chat_id ${message_chat_id[$id]} \
 							--text "*$(echo -e $bot_retorno)*" \
