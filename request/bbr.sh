@@ -1,253 +1,363 @@
-#!/bin/bash
-clear
-
-sh_ver="1.3.1"
-Green_font_prefix="\033[32m" && Red_font_prefix="\033[31m" && Green_background_prefix="\033[42;37m" && Red_background_prefix="\033[41;37m" && Font_color_suffix="\033[0m"
-Info="${Green_font_prefix}[Informacion]${Font_color_suffix}"
-Error="${Red_font_prefix}[Error]${Font_color_suffix}"
-Tip="${Green_font_prefix}[Atencion]${Font_color_suffix}"
-
-
-msg () {
-BRAN='\033[1;37m' && VERMELHO='\e[31m' && VERDE='\e[32m' && AMARELO='\e[33m'
-AZUL='\e[34m' && MAGENTA='\e[35m' && MAG='\033[1;36m' &&NEGRITO='\e[1m' && SEMCOR='\e[0m'
- case $1 in
-  -ne)cor="${VERMELHO}${NEGRITO}" && echo -ne "${cor}${2}${SEMCOR}";;
-  -ama)cor="${AMARELO}${NEGRITO}" && echo -e "${cor}${2}${SEMCOR}";;
-  -verm)cor="${AMARELO}${NEGRITO}[!] ${VERMELHO}" && echo -e "${cor}${2}${SEMCOR}";;
-  -azu)cor="${MAG}${NEGRITO}" && echo -e "${cor}${2}${SEMCOR}";;
-  -verd)cor="${VERDE}${NEGRITO}" && echo -e "${cor}${2}${SEMCOR}";;
-  -bra)cor="${VERMELHO}" && echo -ne "${cor}${2}${SEMCOR}";;
-  "-bar2"|"-bar")cor="${VERMELHO}--–--–--–--–--–--–--–--–--–---–--–--–--–--–--–--–--–--–--–--–--–--–-–-–-–-–-–---–-–-–-–-–-–---–-–-–-–-–-–---–-–-–-–-–-–---–-–-–-–-–-–---–-–-–-–”" && echo -e "${SEMCOR}${cor}${SEMCOR}";;
- esac
-}
-
-
-startbbr(){
-clear
-	remove_all
-	echo "net.core.default_qdisc=fq" >> /etc/sysctl.conf
-	echo "net.ipv4.tcp_congestion_control=bbr" >> /etc/sysctl.conf
-	sysctl -p
-	echo -e "${Info}Â¡BBR comenzÃ³ con Ã©xito!"
-	msg -bar
-}
-
-#Habilitar BBRplus
-startbbrplus(){
-clear
-	remove_all
-	echo "net.core.default_qdisc=fq" >> /etc/sysctl.conf
-	echo "net.ipv4.tcp_congestion_control=bbrplus" >> /etc/sysctl.conf
-	sysctl -p
-	echo -e "${Info}BBRplus comenzÃ³ con Ã©xito!ï¼"
-	msg -bar
-}
-
-remove_all(){
-	rm -rf bbrmod
-	sed -i '/net.core.default_qdisc/d' /etc/sysctl.conf
-    sed -i '/net.ipv4.tcp_congestion_control/d' /etc/sysctl.conf
-    sed -i '/fs.file-max/d' /etc/sysctl.conf
-	sed -i '/net.core.rmem_max/d' /etc/sysctl.conf
-	sed -i '/net.core.wmem_max/d' /etc/sysctl.conf
-	sed -i '/net.core.rmem_default/d' /etc/sysctl.conf
-	sed -i '/net.core.wmem_default/d' /etc/sysctl.conf
-	sed -i '/net.core.netdev_max_backlog/d' /etc/sysctl.conf
-	sed -i '/net.core.somaxconn/d' /etc/sysctl.conf
-	sed -i '/net.ipv4.tcp_syncookies/d' /etc/sysctl.conf
-	sed -i '/net.ipv4.tcp_tw_reuse/d' /etc/sysctl.conf
-	sed -i '/net.ipv4.tcp_tw_recycle/d' /etc/sysctl.conf
-	sed -i '/net.ipv4.tcp_fin_timeout/d' /etc/sysctl.conf
-	sed -i '/net.ipv4.tcp_keepalive_time/d' /etc/sysctl.conf
-	sed -i '/net.ipv4.ip_local_port_range/d' /etc/sysctl.conf
-	sed -i '/net.ipv4.tcp_max_syn_backlog/d' /etc/sysctl.conf
-	sed -i '/net.ipv4.tcp_max_tw_buckets/d' /etc/sysctl.conf
-	sed -i '/net.ipv4.tcp_rmem/d' /etc/sysctl.conf
-	sed -i '/net.ipv4.tcp_wmem/d' /etc/sysctl.conf
-	sed -i '/net.ipv4.tcp_mtu_probing/d' /etc/sysctl.conf
-	sed -i '/net.ipv4.ip_forward/d' /etc/sysctl.conf
-	sed -i '/fs.inotify.max_user_instances/d' /etc/sysctl.conf
-	sed -i '/net.ipv4.tcp_syncookies/d' /etc/sysctl.conf
-	sed -i '/net.ipv4.tcp_fin_timeout/d' /etc/sysctl.conf
-	sed -i '/net.ipv4.tcp_tw_reuse/d' /etc/sysctl.conf
-	sed -i '/net.ipv4.tcp_max_syn_backlog/d' /etc/sysctl.conf
-	sed -i '/net.ipv4.ip_local_port_range/d' /etc/sysctl.conf
-	sed -i '/net.ipv4.tcp_max_tw_buckets/d' /etc/sysctl.conf
-	sed -i '/net.ipv4.route.gc_timeout/d' /etc/sysctl.conf
-	sed -i '/net.ipv4.tcp_synack_retries/d' /etc/sysctl.conf
-	sed -i '/net.ipv4.tcp_syn_retries/d' /etc/sysctl.conf
-	sed -i '/net.core.somaxconn/d' /etc/sysctl.conf
-	sed -i '/net.core.netdev_max_backlog/d' /etc/sysctl.conf
-	sed -i '/net.ipv4.tcp_timestamps/d' /etc/sysctl.conf
-	sed -i '/net.ipv4.tcp_max_orphans/d' /etc/sysctl.conf
-	if [[ -e /appex/bin/lotServer.sh ]]; then
-		bash <(wget --no-check-certificate -qO- https://github.com/lacasitamx/lotServer-1/raw/master/Install.sh) uninstall
-	fi
-	clear
-	echo -e "${Info}:La aceleraciÃ³n estÃ¡ Desinstalada."
-	sleep 1s
-}
-
-start_menu(){
-clear
-msg -bar
-msg -ama "	INSTALADOR BBR-PLUS"
-msg -bar
-
-echo ""
-msg -ne " [1]  " && msg -azu "BBR ACELERADOR TCP ( recomendado )"
-msg -ne " [2]  " && msg -azu "BBR-PLUS "
-msg -ne " [3]  " && msg -azu "<<REGRESAR"
-msg -ne " [0]  " && msg -azu "SALIR"
-msg -bar
-
-check_status
-	if [[ ${kernel_status} == "noinstall" ]]; then
-		echo -e "\e[1;37m Estado actual: ${Green_font_prefix}No instalado\n${Font_color_suffix} Kernel Acelerado ${Red_font_prefix}Por favor, instale el NÃºcleo primero.${Font_color_suffix}"
-	else
-		echo -e "\e[1;37m Estado actual: ${Green_font_prefix}Instalado\n${Font_color_suffix} ${_font_prefix}${kernel_status}${Font_color_suffix} Kernel Acelerado, ${Green_font_prefix}${run_status}${Font_color_suffix}"
-		
-	fi
-msg -bar
-read -p " Por favor ingrese un nÃºmero [0-3]:" numero
-case $numero in
-	0)
-	exit
-	;;
-	1)
-	startbbr
-	;;
-	2)
-	startbbrplus
-	;;
-	3) ;;
-esac
-}
-
-BBR_grub(){
-	if [[ "${release}" == "centos" ]]; then
-        if [[ ${version} = "6" ]]; then
-            if [ ! -f "/boot/grub/grub.conf" ]; then
-                echo -e "${Error} /boot/grub/grub.conf No encontrado, verifique."
-                exit 1
-            fi
-            sed -i 's/^default=.*/default=0/g' /boot/grub/grub.conf
-        elif [[ ${version} = "7" ]]; then
-            if [ ! -f "/boot/grub2/grub.cfg" ]; then
-                echo -e "${Error} /boot/grub2/grub.cfg No encontrado, verifique."
-                exit 1
-            fi
-            grub2-set-default 0
-        fi
-    elif [[ "${release}" == "debian" || "${release}" == "ubuntu" ]]; then
-        /usr/sbin/update-grub
-    fi
-}
-
-#Sistema de inspecciÃ³n
-check_sys(){
-	if [[ -f /etc/redhat-release ]]; then
-		release="centos"
-	elif cat /etc/issue | grep -q -E -i "debian"; then
-		release="debian"
-	elif cat /etc/issue | grep -q -E -i "ubuntu"; then
-		release="ubuntu"
-	elif cat /etc/issue | grep -q -E -i "centos|red hat|redhat"; then
-		release="centos"
-	elif cat /proc/version | grep -q -E -i "debian"; then
-		release="debian"
-	elif cat /proc/version | grep -q -E -i "ubuntu"; then
-		release="ubuntu"
-	elif cat /proc/version | grep -q -E -i "centos|red hat|redhat"; then
-		release="centos"
-    fi
-}
-
-#Verifique la versiÃ³n de Linux
-check_version(){
-	if [[ -s /etc/redhat-release ]]; then
-		version=`grep -oE  "[0-9.]+" /etc/redhat-release | cut -d . -f 1`
-	else
-		version=`grep -oE  "[0-9.]+" /etc/issue | cut -d . -f 1`
-	fi
-	bit=`uname -m`
-	if [[ ${bit} = "x86_64" ]]; then
-		bit="x64"
-	else
-		bit="x32"
-	fi
-}
-
+#!/usr/bin/env bash
+#
+# Auto install latest kernel for TCP BBR
+#
+# System Required:  CentOS 6+, Debian8+, Ubuntu16+
+#
+# Copyright (C) 2016-2021 Teddysun <i@teddysun.com>
+#
+# URL: https://teddysun.com/489.html
 #
 
-check_status(){
-	kernel_version=`uname -r | awk -F "-" '{print $1}'`
-	kernel_version_full=`uname -r`
-	if [[ ${kernel_version_full} = "4.14.129-bbrplus" ]]; then
-		kernel_status="BBRplus"
-	elif [[ ${kernel_version} = "3.10.0" || ${kernel_version} = "3.16.0" || ${kernel_version} = "3.2.0" || ${kernel_version} = "4.4.0" || ${kernel_version} = "3.13.0"  || ${kernel_version} = "2.6.32" || ${kernel_version} = "4.9.0" ]]; then
-		kernel_status="Lotserver"
-	elif [[ `echo ${kernel_version} | awk -F'.' '{print $1}'` == "4" ]] && [[ `echo ${kernel_version} | awk -F'.' '{print $2}'` -ge 9 ]] || [[ `echo ${kernel_version} | awk -F'.' '{print $1}'` == "5" ]]; then
-		kernel_status="BBR"
-	else 
-		kernel_status="noinstall"
-	fi
+cur_dir="$(cd -P -- "$(dirname -- "$0")" && pwd -P)"
 
-	if [[ ${kernel_status} == "Lotserver" ]]; then
-		if [[ -e /appex/bin/lotServer.sh ]]; then
-			run_status=`bash /appex/bin/lotServer.sh status | grep "LotServer" | awk  '{print $3}'`
-			if [[ ${run_status} = "running!" ]]; then
-				run_status="ComenzÃ³ exitosamente"
-			else 
-				run_status="No se pudo iniciar"
-			fi
-		else 
-			run_status="No hay un mÃ³dulo de aceleraciÃ³n instalado"
-		fi
-	elif [[ ${kernel_status} == "BBR" ]]; then
-		run_status=`grep "net.ipv4.tcp_congestion_control" /etc/sysctl.conf | awk -F "=" '{print $2}'`
-		if [[ ${run_status} == "bbr" ]]; then
-			run_status=`lsmod | grep "bbr" | awk '{print $1}'`
-			if [[ ${run_status} == "tcp_bbr" ]]; then
-				run_status="BBR ComenzÃ³ exitosamente"
-			else 
-				run_status="BBR ComenzÃ³ exitosamente"
-			fi
-		elif [[ ${run_status} == "tsunami" ]]; then
-			run_status=`lsmod | grep "tsunami" | awk '{print $1}'`
-			if [[ ${run_status} == "tcp_tsunami" ]]; then
-				run_status="BBR La revisiÃ³n mÃ¡gica se lanzÃ³ con Ã©xito"
-			else 
-				run_status="BBR Inicio de modificaciÃ³n mÃ¡gica fallido"
-			fi
-		elif [[ ${run_status} == "nanqinlang" ]]; then
-			run_status=`lsmod | grep "nanqinlang" | awk '{print $1}'`
-			if [[ ${run_status} == "tcp_nanqinlang" ]]; then
-				run_status="El violento manifestante de BBR se lanzÃ³ con Ã©xito"
-			else 
-				run_status="Violenta revisiÃ³n mÃ¡gica de BBR no pudo comenzar"
-			fi
-		else 
-			run_status="No hay un mÃ³dulo de aceleraciÃ³n instalado"
-		fi
-	elif [[ ${kernel_status} == "BBRplus" ]]; then
-		run_status=`grep "net.ipv4.tcp_congestion_control" /etc/sysctl.conf | awk -F "=" '{print $2}'`
-		if [[ ${run_status} == "bbrplus" ]]; then
-			run_status=`lsmod | grep "bbrplus" | awk '{print $1}'`
-			if [[ ${run_status} == "tcp_bbrplus" ]]; then
-				run_status="BBRplus comenzÃ³ con Ã©xito"
-			else 
-				run_status="BBRplus comenzÃ³ con Ã©xito"
-			fi
-		else 
-			run_status="No hay un mÃ³dulo de aceleraciÃ³n instalado"
-		fi
-	fi
+_red() {
+    printf '\033[1;31;31m%b\033[0m' "$1"
 }
 
-#############Componentes de detecciÃ³n del sistema#############
-check_sys
-check_version
-[[ ${release} != "debian" ]] && [[ ${release} != "ubuntu" ]] && [[ ${release} != "centos" ]] && echo -e "${Error} Este script no es compatible con el sistema actual. ${release} !" && exit 1
-start_menu
+_green() {
+    printf '\033[1;31;32m%b\033[0m' "$1"
+}
+
+_yellow() {
+    printf '\033[1;31;33m%b\033[0m' "$1"
+}
+
+_info() {
+    _green "[Info] "
+    printf -- "%s" "$1"
+    printf "\n"
+}
+
+_warn() {
+    _yellow "[Warning] "
+    printf -- "%s" "$1"
+    printf "\n"
+}
+
+_error() {
+    _red "[Error] "
+    printf -- "%s" "$1"
+    printf "\n"
+    exit 1
+}
+
+_exists() {
+    local cmd="$1"
+    if eval type type > /dev/null 2>&1; then
+        eval type "$cmd" > /dev/null 2>&1
+    elif command > /dev/null 2>&1; then
+        command -v "$cmd" > /dev/null 2>&1
+    else
+        which "$cmd" > /dev/null 2>&1
+    fi
+    local rt=$?
+    return ${rt}
+}
+
+_os() {
+    local os=""
+    [ -f "/etc/debian_version" ] && source /etc/os-release && os="${ID}" && printf -- "%s" "${os}" && return
+    [ -f "/etc/redhat-release" ] && os="centos" && printf -- "%s" "${os}" && return
+}
+
+_os_full() {
+    [ -f /etc/redhat-release ] && awk '{print ($1,$3~/^[0-9]/?$3:$4)}' /etc/redhat-release && return
+    [ -f /etc/os-release ] && awk -F'[= "]' '/PRETTY_NAME/{print $3,$4,$5}' /etc/os-release && return
+    [ -f /etc/lsb-release ] && awk -F'[="]+' '/DESCRIPTION/{print $2}' /etc/lsb-release && return
+}
+
+_os_ver() {
+    local main_ver="$( echo $(_os_full) | grep -oE  "[0-9.]+")"
+    printf -- "%s" "${main_ver%%.*}"
+}
+
+_error_detect() {
+    local cmd="$1"
+    _info "${cmd}"
+    eval ${cmd}
+    if [ $? -ne 0 ]; then
+        _error "Execution command (${cmd}) failed, please check it and try again."
+    fi
+}
+
+_is_digit(){
+    local input=${1}
+    if [[ "$input" =~ ^[0-9]+$ ]]; then
+        return 0
+    else
+        return 1
+    fi
+}
+
+_is_64bit(){
+    if [ $(getconf WORD_BIT) = '32' ] && [ $(getconf LONG_BIT) = '64' ]; then
+        return 0
+    else
+        return 1
+    fi
+}
+
+_version_ge(){
+    test "$(echo "$@" | tr " " "\n" | sort -rV | head -n 1)" == "$1"
+}
+
+get_valid_valname(){
+    local val=${1}
+    local new_val=$(eval echo $val | sed 's/[-.]/_/g')
+    echo ${new_val}
+}
+
+get_hint(){
+    local val=${1}
+    local new_val=$(get_valid_valname $val)
+    eval echo "\$hint_${new_val}"
+}
+
+#Display Memu
+display_menu(){
+    local soft=${1}
+    local default=${2}
+    eval local arr=(\${${soft}_arr[@]})
+    local default_prompt
+    if [[ "$default" != "" ]]; then
+        if [[ "$default" == "last" ]]; then
+            default=${#arr[@]}
+        fi
+        default_prompt="(default ${arr[$default-1]})"
+    fi
+    local pick
+    local hint
+    local vname
+    local prompt="which ${soft} you'd select ${default_prompt}: "
+
+    while :
+    do
+        echo -e "\n------------ ${soft} setting ------------\n"
+        for ((i=1;i<=${#arr[@]};i++ )); do
+            vname="$(get_valid_valname ${arr[$i-1]})"
+            hint="$(get_hint $vname)"
+            [[ "$hint" == "" ]] && hint="${arr[$i-1]}"
+            echo -e "${green}${i}${plain}) $hint"
+        done
+        echo
+        read -p "${prompt}" pick
+        if [[ "$pick" == "" && "$default" != "" ]]; then
+            pick=${default}
+            break
+        fi
+
+        if ! _is_digit "$pick"; then
+            prompt="Input error, please input a number"
+            continue
+        fi
+
+        if [[ "$pick" -lt 1 || "$pick" -gt ${#arr[@]} ]]; then
+            prompt="Input error, please input a number between 1 and ${#arr[@]}: "
+            continue
+        fi
+
+        break
+    done
+
+    eval ${soft}=${arr[$pick-1]}
+    vname="$(get_valid_valname ${arr[$pick-1]})"
+    hint="$(get_hint $vname)"
+    [[ "$hint" == "" ]] && hint="${arr[$pick-1]}"
+    echo -e "\nyour selection: $hint\n"
+}
+
+get_latest_version() {
+    latest_version=($(wget -qO- https://kernel.ubuntu.com/~kernel-ppa/mainline/ | awk -F'\"v' '/v[4-9]./{print $2}' | cut -d/ -f1 | grep -v - | sort -V))
+    [ ${#latest_version[@]} -eq 0 ] && _error "Get latest kernel version failed."
+    kernel_arr=()
+    for i in ${latest_version[@]}; do
+        if _version_ge $i 5.9; then
+            kernel_arr+=($i);
+        fi
+    done
+    display_menu kernel last
+    if _is_64bit; then
+        deb_name=$(wget -qO- https://kernel.ubuntu.com/~kernel-ppa/mainline/v${kernel}/ | grep "linux-image" | grep "generic" | awk -F'\">' '/amd64.deb/{print $2}' | cut -d'<' -f1 | head -1)
+        deb_kernel_url="https://kernel.ubuntu.com/~kernel-ppa/mainline/v${kernel}/${deb_name}"
+        deb_kernel_name="linux-image-${kernel}-amd64.deb"
+        modules_deb_name=$(wget -qO- https://kernel.ubuntu.com/~kernel-ppa/mainline/v${kernel}/ | grep "linux-modules" | grep "generic" | awk -F'\">' '/amd64.deb/{print $2}' | cut -d'<' -f1 | head -1)
+        deb_kernel_modules_url="https://kernel.ubuntu.com/~kernel-ppa/mainline/v${kernel}/${modules_deb_name}"
+        deb_kernel_modules_name="linux-modules-${kernel}-amd64.deb"
+    else
+        deb_name=$(wget -qO- https://kernel.ubuntu.com/~kernel-ppa/mainline/v${kernel}/ | grep "linux-image" | grep "generic" | awk -F'\">' '/i386.deb/{print $2}' | cut -d'<' -f1 | head -1)
+        deb_kernel_url="https://kernel.ubuntu.com/~kernel-ppa/mainline/v${kernel}/${deb_name}"
+        deb_kernel_name="linux-image-${kernel}-i386.deb"
+        modules_deb_name=$(wget -qO- https://kernel.ubuntu.com/~kernel-ppa/mainline/v${kernel}/ | grep "linux-modules" | grep "generic" | awk -F'\">' '/i386.deb/{print $2}' | cut -d'<' -f1 | head -1)
+        deb_kernel_modules_url="https://kernel.ubuntu.com/~kernel-ppa/mainline/v${kernel}/${modules_deb_name}"
+        deb_kernel_modules_name="linux-modules-${kernel}-i386.deb"
+    fi
+    [ -z "${deb_name}" ] && _error "Getting Linux kernel binary package name failed, maybe kernel build failed. Please choose other one and try again."
+}
+
+get_char() {
+    SAVEDSTTY=`stty -g`
+    stty -echo
+    stty cbreak
+    dd if=/dev/tty bs=1 count=1 2> /dev/null
+    stty -raw
+    stty echo
+    stty $SAVEDSTTY
+}
+
+check_bbr_status() {
+    local param=$(sysctl net.ipv4.tcp_congestion_control | awk '{print $3}')
+    if [[ x"${param}" == x"bbr" ]]; then
+        return 0
+    else
+        return 1
+    fi
+}
+
+check_kernel_version() {
+    local kernel_version=$(uname -r | cut -d- -f1)
+    if _version_ge ${kernel_version} 4.9; then
+        return 0
+    else
+        return 1
+    fi
+}
+
+# Check OS version
+check_os() {
+    if _exists "virt-what"; then
+        virt="$(virt-what)"
+    elif _exists "systemd-detect-virt"; then
+        virt="$(systemd-detect-virt)"
+    fi
+    if [ -n "${virt}" -a "${virt}" = "lxc" ]; then
+        _error "Virtualization method is LXC, which is not supported."
+    fi
+    if [ -n "${virt}" -a "${virt}" = "openvz" ] || [ -d "/proc/vz" ]; then
+        _error "Virtualization method is OpenVZ, which is not supported."
+    fi
+    [ -z "$(_os)" ] && _error "Not supported OS"
+    case "$(_os)" in
+        ubuntu)
+            [ -n "$(_os_ver)" -a "$(_os_ver)" -lt 16 ] && _error "Not supported OS, please change to Ubuntu 16+ and try again."
+            ;;
+        debian)
+            [ -n "$(_os_ver)" -a "$(_os_ver)" -lt 8 ] &&  _error "Not supported OS, please change to Debian 8+ and try again."
+            ;;
+        centos)
+            [ -n "$(_os_ver)" -a "$(_os_ver)" -lt 6 ] &&  _error "Not supported OS, please change to CentOS 6+ and try again."
+            ;;
+        *)
+            _error "Not supported OS"
+            ;;
+    esac
+}
+
+sysctl_config() {
+    sed -i '/net.core.default_qdisc/d' /etc/sysctl.conf
+    sed -i '/net.ipv4.tcp_congestion_control/d' /etc/sysctl.conf
+    echo "net.core.default_qdisc = fq" >> /etc/sysctl.conf
+    echo "net.ipv4.tcp_congestion_control = bbr" >> /etc/sysctl.conf
+    sysctl -p >/dev/null 2>&1
+}
+
+install_kernel() {
+    case "$(_os)" in
+        centos)
+            if [ -n "$(_os_ver)" ]; then
+                if ! _exists "yum-config-manager"; then
+                    _error_detect "yum install -y yum-utils"
+                fi
+                if [ "$(_os_ver)" -eq 6 ]; then
+                    _error_detect "rpm --import https://www.elrepo.org/RPM-GPG-KEY-elrepo.org"
+                    rpm_kernel_url="https://dl.lamp.sh/files/"
+                    if _is_64bit; then
+                        rpm_kernel_name="kernel-ml-4.18.20-1.el6.elrepo.x86_64.rpm"
+                        rpm_kernel_devel_name="kernel-ml-devel-4.18.20-1.el6.elrepo.x86_64.rpm"
+                    else
+                        rpm_kernel_name="kernel-ml-4.18.20-1.el6.elrepo.i686.rpm"
+                        rpm_kernel_devel_name="kernel-ml-devel-4.18.20-1.el6.elrepo.i686.rpm"
+                    fi
+                    _error_detect "wget -c -t3 -T60 -O ${rpm_kernel_name} ${rpm_kernel_url}${rpm_kernel_name}"
+                    _error_detect "wget -c -t3 -T60 -O ${rpm_kernel_devel_name} ${rpm_kernel_url}${rpm_kernel_devel_name}"
+                    [ -s "${rpm_kernel_name}" ] && _error_detect "rpm -ivh ${rpm_kernel_name}" || _error "Download ${rpm_kernel_name} failed, please check it."
+                    [ -s "${rpm_kernel_devel_name}" ] && _error_detect "rpm -ivh ${rpm_kernel_devel_name}" || _error "Download ${rpm_kernel_devel_name} failed, please check it."
+                    rm -f ${rpm_kernel_name} ${rpm_kernel_devel_name}
+                    [ ! -f "/boot/grub/grub.conf" ] && _error "/boot/grub/grub.conf not found, please check it."
+                    sed -i 's/^default=.*/default=0/g' /boot/grub/grub.conf
+                elif [ "$(_os_ver)" -eq 7 ]; then
+                    _error_detect "yum -y install centos-release-xen-48"
+                    [ x"$(yum-config-manager centos-virt-xen-48 | grep -w enabled | awk '{print $3}')" != x"True" ] && _error_detect "yum-config-manager --enable centos-virt-xen-48"
+                    _error_detect "yum -y update kernel"
+                    _error_detect "yum -y install kernel-devel"
+                fi
+            fi
+            ;;
+        ubuntu|debian)
+            _info "Getting latest kernel version..."
+            get_latest_version
+            if [ -n "${modules_deb_name}" ]; then
+                _error_detect "wget -c -t3 -T60 -O ${deb_kernel_modules_name} ${deb_kernel_modules_url}"
+            fi
+            _error_detect "wget -c -t3 -T60 -O ${deb_kernel_name} ${deb_kernel_url}"
+            _error_detect "dpkg -i ${deb_kernel_modules_name} ${deb_kernel_name}"
+            rm -f ${deb_kernel_modules_name} ${deb_kernel_name}
+            _error_detect "/usr/sbin/update-grub"
+            ;;
+        *)
+            ;; # do nothing
+    esac
+}
+
+reboot_os() {
+    echo
+    _info "The system needs to reboot."
+    read -p "Do you want to restart system? [y/n]" is_reboot
+    if [[ ${is_reboot} == "y" || ${is_reboot} == "Y" ]]; then
+        reboot
+    else
+        _info "Reboot has been canceled..."
+        exit 0
+    fi
+}
+
+install_bbr() {
+    if check_bbr_status; then
+        echo
+        _info "TCP BBR has already been enabled. nothing to do..."
+        exit 0
+    fi
+    if check_kernel_version; then
+        echo
+        _info "The kernel version is greater than 4.9, directly setting TCP BBR..."
+        sysctl_config
+        _info "Setting TCP BBR completed..."
+        exit 0
+    fi
+    check_os
+    install_kernel
+    sysctl_config
+    reboot_os
+}
+
+[[ $EUID -ne 0 ]] && _error "This script must be run as root"
+opsy=$( _os_full )
+arch=$( uname -m )
+lbit=$( getconf LONG_BIT )
+kern=$( uname -r )
+
+clear
+echo "---------- System Information ----------"
+echo " OS      : $opsy"
+echo " Arch    : $arch ($lbit Bit)"
+echo " Kernel  : $kern"
+echo "----------------------------------------"
+echo " Automatically enable TCP BBR script"
+echo
+echo " URL: https://teddysun.com/489.html"
+echo "----------------------------------------"
+echo
+echo "Press any key to start...or Press Ctrl+C to cancel"
+char=$(get_char)
+
+install_bbr 2>&1 | tee ${cur_dir}/install_bbr.log
