@@ -65,12 +65,12 @@ read -p "Enter..."
 # -*- coding: utf-8 -*-
 import socket, threading, thread, select, signal, sys, time, getopt
 
-LISTENING_ADDR = '0.0.0.0'
+LISTENING_ADDR = '127.0.0.1'
 LISTENING_PORT = int("$port")
 PASS = str("$ipdns")
 BUFLEN = 4096 * 4
 TIMEOUT = 60
-DEFAULT_HOST = '127.0.0.1:443'
+DEFAULT_HOST = '127.0.0.1:22'
 msg = "HTTP/1.1 200 <strong>($RETORNO)</strong>\r\nContent-length: 0\r\n\r\nHTTP/1.1 200 !!!conexion exitosa!!!\r\n\r\n"
 RESPONSE = str(msg)
 
@@ -307,5 +307,5 @@ PYTHON
 ) > $HOME/proxy.log &
 echo -e "$BARRA"
 echo "Proxy Iniciado Con Exito"
-echo "Listen 0.0.0.0:${port} ..."
+echo "Listen 127.0.0.1:${port} ..."
 echo
