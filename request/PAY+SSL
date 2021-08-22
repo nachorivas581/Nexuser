@@ -33,8 +33,6 @@ sleep 1; echo 5 ;
 echo -e "\033[7;32m INSTALADO SSL + PAY..\e[0m "
 apt-get install stunnel4 -y ;
 apt-get install stunnel -y ;
-apt-get install dropbear -y ;
-cd /etc/
 cd /etc/stunnel ;
 openssl genrsa -out key.pem 2048 ;
 sleep 2;echo -e "\033[1;33m Rellenalo a tu gusto.\e[0m";
