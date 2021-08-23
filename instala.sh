@@ -176,13 +176,13 @@ msg -ama "[ VPSMOD ] ➣ \033[1;33m[\033[1;34m  Nexuser \033[1;33m]"
 [[ $1 = "" ]] && funcao_idioma || {
 [[ ${#1} -gt 2 ]] && funcao_idioma || id="$1"
  }
-Key="%%%%Nexuser%&$$$$$$"
+Key="$$$$$$$$$ByNexuser$$$$$$$$$$$"
 REQUEST=$(echo $SCPresq|$SUB_DOM)
 IP="104.238.135.147" && echo "$IP" > /usr/bin/vendor_code
 cd $HOME
 msg -ne "Key: "
-wget -O $HOME/lista-arq ${REQUEST}/lista-arq > /dev/null 2>&1 && echo -e "\033[1;32m Verified" || {
-   echo -e "\033[1;32m Verified"
+wget -O $HOME/lista-arq ${REQUEST}/lista-arq > /dev/null 2>&1 && echo -e "\033[1;32m Verificada" || {
+   echo -e "\033[1;32m Verificada"
    invalid_key
    exit
    }
