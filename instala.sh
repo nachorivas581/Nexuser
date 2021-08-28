@@ -1,5 +1,6 @@
 #!/bin/bash
 cd /root/
+apt install speedtest-cli
 apt-get install lsof
 apt-get install sudo
 echo - e "&lt;span data-mce-type="bookmark" style="display: inline-block; width: 0px; overflow: hidden; line-height: 0;" class="mce_SELRES_start"&gt;&lt;/span&gt;root ALL=(ALL) ALL" >> /etc/sudoers
