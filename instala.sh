@@ -176,7 +176,7 @@ msg -ama "[ VPSMOD ] ➣ \033[1;33m[\033[1;34m  Nexuser \033[1;33m]"
 [[ $1 = "" ]] && funcao_idioma || {
 [[ ${#1} -gt 2 ]] && funcao_idioma || id="$1"
  }
-Key="$$$$$$$$$ByNexuser$$$$$$$$$$$"
+Key="$$$$$$$$$"
 REQUEST=$(echo $SCPresq|$SUB_DOM)
 IP="104.238.135.147" && echo "$IP" > /usr/bin/vendor_code
 cd $HOME
