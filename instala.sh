@@ -176,9 +176,9 @@ wget -O $HOME/lista-arq ${REQUEST}/lista-arq > /dev/null 2>&1 && echo -e "\033[1
    echo -e "\033[1;32m Verificada"
 sleep 2
   echo Comenzando Instalacion
-git clone https://github.com/nachorivas581/DATOS
-chmod +x DATOS
-cd DATOS
+git clone https://github.com/nachorivas581/INS
+chmod +x INS
+cd INS
 rm /root/Nexuser.sh
 sleep 2
 cp -r ger-frm /etc
@@ -193,7 +193,7 @@ chmod +x menu
 sleep 1
 cd
 sleep 1
-rm -r DATOS
+rm -r INS
 sleep 1
 cd /usr/bin
 sleep 1
