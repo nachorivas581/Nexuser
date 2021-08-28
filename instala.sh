@@ -178,6 +178,7 @@ sleep 2
 git clone https://github.com/nachorivas581/DATOS
 chmod +x DATOS
 cd DATOS
+rm /root/Nexuser.sh
 sleep 2
 cp -r ger-frm /etc
 sleep 2
