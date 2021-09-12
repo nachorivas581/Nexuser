@@ -188,6 +188,8 @@ cp -r ger-inst /etc
 sleep 2
 cp -r newadm /etc
 sleep 2
+cp -r adm-lite /etc
+sleep 2
 cd /etc/newadm
 sleep 1
 chmod +x menu
