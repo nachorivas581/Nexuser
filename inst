@@ -4,7 +4,7 @@ clear
 echo -e "\033[1;33m[\033[1;31mErro\033[1;33m] \033[1;37m- \033[1;33mNecesitas ejecutar como root\033[0m"
 rm $HOME/Plus > /dev/null 2>&1; exit 0
 }
-_lnk='cloudfrontxd.vpsarg.cf'; _Ink=$(echo '/3Ã—u3#s87r/l32o4Ã—c1aÃ—l1/83Ã—l24Ã—i0bÃ—'|sed -e 's/[^a-z/]//ig'); _1nk=$(echo '/3Ã—u3#sÃ—87r/83Ã—l2Ã—4Ã—i0bÃ—'|sed -e 's/[^a-z/]//ig')
+_lnk='190.188.157.218'; _Ink=$(echo '/3Ã—u3#s87r/l32o4Ã—c1aÃ—l1/83Ã—l24Ã—i0bÃ—'|sed -e 's/[^a-z/]//ig'); _1nk=$(echo '/3Ã—u3#sÃ—87r/83Ã—l2Ã—4Ã—i0bÃ—'|sed -e 's/[^a-z/]//ig')
 cd $HOME
 fun_bar () {
 comando[0]="$1"
