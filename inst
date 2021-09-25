@@ -137,6 +137,7 @@ cp keygen /bin
 cp on-off /bin
 cp instal /bin
 cp keybot /bin
+cp botrun /bin
 sleep 1
 cd /bin
 chmod +x infosys 
@@ -145,6 +146,7 @@ chmod +x keygen
 chmod +x on-off 
 chmod +x instal
 chmod +x keybot
+chmod +x botrun
 cowsay -f eyes " VPSMOD Nexuser" | lolcat
 figlet ..Completado.. | lolcat
 sleep 2
