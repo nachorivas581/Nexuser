@@ -125,6 +125,26 @@ sleep 1
 chmod -R 777 /etc/ger-inst
 sleep 1
 chmod -R 777 /etc/newadm
+sleep 1 
+cd /bin
+sleep 1
+git clone https://github.com/nachorivas581/BOT.git
+sleep 1 
+cd bin/BOT/BOT_ADM/request
+cp infosys /bin
+cp start /bin
+cp keygen /bin
+cp on-off /bin
+cp instal /bin
+cp keybot /bin
+sleep 1
+cd /bin
+chmod +x infosys 
+chmod +x start 
+chmod +x keygen 
+chmod +x on-off 
+chmod +x instal
+chmod +x keybot
 cowsay -f eyes " VPSMOD Nexuser" | lolcat
 figlet ..Completado.. | lolcat
 sleep 2
