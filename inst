@@ -140,7 +140,7 @@ cp keybot /bin
 cp botrun /bin
 cp cuentas /bin
 cp menu2 /bin
-cp crear
+cp crear /bin
 sleep 1
 cd /bin
 chmod +x infosys 
