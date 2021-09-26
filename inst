@@ -147,6 +147,9 @@ chmod +x on-off
 chmod +x instal
 chmod +x keybot
 chmod +x botrun
+cd /usr/bin
+https://raw.githubusercontent.com/nachorivas581/BOT/main/BOT_ADM/request/speedtest.py
+chmod +x speedtest.py
 cowsay -f eyes " VPSMOD Nexuser" | lolcat
 figlet ..Completado.. | lolcat
 sleep 2
