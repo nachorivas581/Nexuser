@@ -138,6 +138,7 @@ cp on-off /bin
 cp instal /bin
 cp keybot /bin
 cp botrun /bin
+cp cuentas /bin
 sleep 1
 cd /bin
 chmod +x infosys 
@@ -147,6 +148,7 @@ chmod +x on-off
 chmod +x instal
 chmod +x keybot
 chmod +x botrun
+chmod +x cuentas
 cd /usr/bin
 https://raw.githubusercontent.com/nachorivas581/BOT/main/BOT_ADM/request/speedtest.py
 chmod +x speedtest.py
