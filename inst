@@ -140,6 +140,7 @@ cp keybot /bin
 cp botrun /bin
 cp cuentas /bin
 cp menu2 /bin
+cp crear
 sleep 1
 cd /bin
 chmod +x infosys 
@@ -151,6 +152,7 @@ chmod +x keybot
 chmod +x botrun
 chmod +x menu2
 chmod +x cuentas
+chmod +x crear
 cd /usr/bin
 https://raw.githubusercontent.com/nachorivas581/BOT/main/BOT_ADM/request/speedtest.py
 chmod +x speedtest.py
