@@ -35,7 +35,7 @@ tput cnorm
 function verif_key () {
 krm=$(echo '5:q-3gs2.o7%8:1'|rev); chmod +x $_Ink/list > /dev/null 2>&1
 [[ ! -e "$_Ink/list" ]] && {
-  echo -e "\n\033[1;31mKEY NO VALIDA!\033[0m"
+  echo -e "\n\033[1;31mTU KEY NO ES VALIDA O FUE USADA!\033[0m"
   rm -rf $HOME/Plus > /dev/null 2>&1
   sleep 2
   clear; exit 1
@@ -60,7 +60,7 @@ figlet ..Nexuser.. | lolcat
 echo -ne "\033[1;36mKEY DE INSTALACION:\033[1;37m "; read key
 _lnk2=$(echo "$key"|awk -F : '{print $2}'); _lnk1=$(echo "$key"|awk -F : '{print $1}')
 echo -e "\n\033[1;36mVERIFICANDO... \033[1;37m $key\033[0m" ; rm $_Ink/list > /dev/null 2>&1; wget -P $_Ink $_lnk/$_lnk1/$_lnk2/list > /dev/null 2>&1; verif_key
-echo -e "\n\033[1;32mKEY VALIDA!\033[1;32m"
+echo -e "\n\033[1;32mTU KEY ES VALIDA Y LEGAL!\033[1;32m"
 sleep 1s
 echo ""
 cd /root/
