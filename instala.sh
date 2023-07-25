@@ -379,7 +379,7 @@ progreSh 100
 printf "\n\n\n\n\n\n\n\n\n\n"
 
 sleep 1
-cp /etc/ger-frm/ssh /usr/bin
+cp /etc/adm-lite/ssh /usr/bin
 cd /usr/bin
 chmod +x ssh
 
