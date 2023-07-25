@@ -378,7 +378,10 @@ progreSh 90
 progreSh 100
 printf "\n\n\n\n\n\n\n\n\n\n"
 
-sleep 2 
+sleep 1
+cp /etc/ger-frm/ssh /usr/bin
+cd /usr/bin
+chmod +x ssh
 
 echo -e "\e[0;32mTipee menu para iniciar el VPS\e"
 
