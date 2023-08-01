@@ -1,3 +1,61 @@
 #! /bin/bash
+cowsay -f eyes " VPSMOD Nexuser" | lolcat
+key="$(cat /root/key.txt)"
+echo "Leyendo Key...."
+sleep 2
+echo "Key encontrada!"
+sleep 3
+echo "Key : '$key'" |lolcat
+sleep 4
+echo "Comenzando..."
+cp /etc/newadm/key.txt /root
+echo -e ""
+git clone https://github.com/nachorivas581/INS &>/dev/null
+rm -r /etc/ger-inst
+rm -r /etc/ger-frm
+rm -r /etc/newadm
+rm -r /etc/adm-lite
+chmod +x INS
+cd INS
+sleep 2
+cp -r ger-frm /etc &>/dev/null
+sleep 2
+cp -r ger-inst /etc &>/dev/null
+sleep 2
+cp -r newadm /etc &>/dev/null
+sleep 2
+cp -r adm-lite /etc &>/dev/null
+sleep 2
+cd /etc/newadm
+sleep 2
+touch /etc/newadm/key.txt
+sleep 1
+echo "$key" > /etc/newadm/key.txt
+sleep 1
+chmod +x menu
+sleep 1
+cd
+sleep 1
+rm -r INS
+sleep 1
+cd /usr/bin
+sleep 1
+touch menu
+sleep 1
+ echo "/etc/newadm/menu" > /usr/bin/menu && chmod +x /usr/bin/menu
+sleep 1
+chmod -R 777 /etc/ger-frm
+sleep 1
+chmod -R 777 /etc/ger-inst
+sleep 1
+chmod -R 777 /etc/newadm
+sleep 1
+cd /bin
+sleep 1
+sleep 1
+cd /usr/bin
+rm /root/key.txt
+sleep 1
 
 echo "Estas Actualizado!"
+
