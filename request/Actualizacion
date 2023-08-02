@@ -1,15 +1,19 @@
 #! /bin/bash
-cowsay -f eyes " VPSMOD Nexuser" | lolcat
 cp /etc/newadm/key.txt /root
 key="$(cat /root/key.txt)"
-echo "Leyendo Key...."
-sleep 2
-echo "Key encontrada!"
+clear
+echo -ne 'Buscando Key...                    \r'|lolcat
 sleep 3
-echo "Key : '$key'" |lolcat
-sleep 4
-echo "Comenzando..."
+echo -ne 'Key Encontrada!                             \r' |lolcat
+sleep 2
+echo -ne 'Leyendo Key...                              \r'|lolcat
+sleep 2
+echo -ne 'Verificando                                 \r'|lolcat
+sleep 3
+echo "KEY :  $key"                                  |lolcat
+sleep 2;
 echo -e ""
+figlet Comenzando Instalacion|lolcat
 git clone https://github.com/nachorivas581/INS &>/dev/null
 rm -r /etc/ger-inst
 rm -r /etc/ger-frm
@@ -17,17 +21,11 @@ rm -r /etc/newadm
 rm -r /etc/adm-lite
 chmod +x INS
 cd INS
-sleep 2
 cp -r ger-frm /etc &>/dev/null
-sleep 2
 cp -r ger-inst /etc &>/dev/null
-sleep 2
 cp -r newadm /etc &>/dev/null
-sleep 2
 cp -r adm-lite /etc &>/dev/null
-sleep 2
 cd /etc/newadm
-sleep 2
 touch /etc/newadm/key.txt
 sleep 1
 echo "$key" > /etc/newadm/key.txt
@@ -35,9 +33,7 @@ sleep 1
 chmod +x menu
 sleep 1
 cd
-sleep 1
 rm -r INS
-sleep 1
 cd /usr/bin
 sleep 1
 touch menu
@@ -50,12 +46,41 @@ chmod -R 777 /etc/ger-inst
 sleep 1
 chmod -R 777 /etc/newadm
 sleep 1
+#!/bin/bash
+# 1. Create ProgressBar function
+# 1.1 Input is currentState($1) and totalState($2)
+function ProgressBar {
+# Process data
+    let _progress=(${1}*100/${2}*100)/100
+    let _done=(${_progress}*4)/10
+    let _left=40-$_done
+# Build progressbar string lengths
+    _fill=$(printf "%${_done}s")
+    _empty=$(printf "%${_left}s")
+
+# 1.2 Build progressbar strings and print the ProgressBar line
+# 1.2.1 Output example:
+# 1.2.1.1 Progress : [########################################] 100%
+printf "\rProgreso : [${_fill// /o}${_empty// /-}] ${_progress}%%"
+
+}
+
+# Variables
+_start=1
+
+# This accounts as the "totalState" variable for the ProgressBar function
+_end=100
+
+# Proof of concept
+for number in $(seq ${_start} ${_end})
+do
+    sleep 0.1
+    ProgressBar ${number} ${_end}
+done
+printf '\nActualizacion Completa!\n'
 cd /bin
 sleep 1
 sleep 1
 cd /usr/bin
 rm /root/key.txt
 sleep 1
-
-echo "Estas Actualizado!"
-
