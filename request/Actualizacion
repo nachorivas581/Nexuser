@@ -1,5 +1,6 @@
 #! /bin/bash
 cowsay -f eyes " VPSMOD Nexuser" | lolcat
+cp /etc/newadm/key.txt /root
 key="$(cat /root/key.txt)"
 echo "Leyendo Key...."
 sleep 2
@@ -8,7 +9,6 @@ sleep 3
 echo "Key : '$key'" |lolcat
 sleep 4
 echo "Comenzando..."
-cp /etc/newadm/key.txt /root
 echo -e ""
 git clone https://github.com/nachorivas581/INS &>/dev/null
 rm -r /etc/ger-inst
