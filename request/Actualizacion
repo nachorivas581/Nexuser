@@ -13,7 +13,7 @@ sleep 3
 echo "KEY :  $key"                                  |lolcat
 sleep 2;
 echo -e ""
-figlet Comenzando Instalacion|lolcat
+figlet Comenzando Actualizacion |lolcat
 git clone https://github.com/nachorivas581/INS &>/dev/null
 rm -r /etc/ger-inst
 rm -r /etc/ger-frm
